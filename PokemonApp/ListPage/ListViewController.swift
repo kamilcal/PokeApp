@@ -10,14 +10,22 @@ import UIKit
 class ListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    
+    private var tableHelper: ListTableViewHelper!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupUI()
         
     }
     
 
 
+}
+
+private extension ListViewController {
+    
+    private func setupUI(){
+        tableHelper = .init(tableView: tableView)
+    }
 }
