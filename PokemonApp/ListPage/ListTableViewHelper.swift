@@ -25,12 +25,20 @@ class ListTableViewHelper: NSObject{
         
         setupTableView()
         
-        apiClient.getData { pokemon in
-            print(pokemon)
-            for (pokemon) in pokemon {
-                print(pokemon.name)
-            }
+        let urlString = "https://pokeapi.co/api/v2/pokemon?limit=50"
+        guard let url = URL(string: urlString) else {
+            return
         }
+
+        apiClient.makeAPIRequest(url: url) { (pokemonList: Pokemon) in
+            let pokemonResults = pokemonList.results
+            print(pokemonResults)
+            for pokemonResults in pokemonResults {
+                print(pokemonResults.name)
+            }
+            // Do something with the pokemon results here...
+        }
+
     }
     
     private func setupTableView() {
