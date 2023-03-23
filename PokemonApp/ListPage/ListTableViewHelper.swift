@@ -14,6 +14,8 @@ class ListTableViewHelper: NSObject{
     private var tableView: UITableView?
     private var navigationController: UINavigationController?
 
+    let apiClient = APIClients()
+
     
     init(tableView: UITableView, navigationController: UINavigationController) {
         self.tableView = tableView
@@ -22,6 +24,13 @@ class ListTableViewHelper: NSObject{
         super.init()
         
         setupTableView()
+        
+        apiClient.getData { pokemon in
+            print(pokemon)
+            for (pokemon) in pokemon {
+                print(pokemon.name)
+            }
+        }
     }
     
     private func setupTableView() {

@@ -18,6 +18,8 @@
 		D21E7A0F29CC6FA7007AC3FA /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E7A0D29CC6FA7007AC3FA /* ListTableViewCell.swift */; };
 		D21E7A1029CC6FA7007AC3FA /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D21E7A0E29CC6FA7007AC3FA /* ListTableViewCell.xib */; };
 		D21E7A1429CC80C4007AC3FA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E7A1329CC80C4007AC3FA /* DetailViewController.swift */; };
+		D21E7A1A29CCDB2C007AC3FA /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E7A1929CCDB2C007AC3FA /* PokemonModel.swift */; };
+		D21E7A1C29CCDC05007AC3FA /* APIClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E7A1B29CCDC05007AC3FA /* APIClients.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		D21E7A0D29CC6FA7007AC3FA /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		D21E7A0E29CC6FA7007AC3FA /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		D21E7A1329CC80C4007AC3FA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D21E7A1929CCDB2C007AC3FA /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
+		D21E7A1B29CCDC05007AC3FA /* APIClients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClients.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		D21E79F329CC6983007AC3FA /* PokemonApp */ = {
 			isa = PBXGroup;
 			children = (
+				D21E7A1829CCDAFD007AC3FA /* API */,
 				D21E7A1229CC8058007AC3FA /* HomePage */,
 				D21E7A0A29CC6F2C007AC3FA /* ListPage */,
 				D21E7A1129CC8031007AC3FA /* DetailPage */,
@@ -104,6 +109,15 @@
 				D21E79F829CC6983007AC3FA /* HomeViewController.swift */,
 			);
 			path = HomePage;
+			sourceTree = "<group>";
+		};
+		D21E7A1829CCDAFD007AC3FA /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D21E7A1929CCDB2C007AC3FA /* PokemonModel.swift */,
+				D21E7A1B29CCDC05007AC3FA /* APIClients.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,12 +193,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D21E79F929CC6983007AC3FA /* HomeViewController.swift in Sources */,
+				D21E7A1C29CCDC05007AC3FA /* APIClients.swift in Sources */,
 				D21E79F529CC6983007AC3FA /* AppDelegate.swift in Sources */,
 				D21E7A0929CC6CAF007AC3FA /* ListViewController.swift in Sources */,
 				D21E7A0C29CC6F5A007AC3FA /* ListTableViewHelper.swift in Sources */,
 				D21E79F729CC6983007AC3FA /* SceneDelegate.swift in Sources */,
 				D21E7A0F29CC6FA7007AC3FA /* ListTableViewCell.swift in Sources */,
 				D21E7A1429CC80C4007AC3FA /* DetailViewController.swift in Sources */,
+				D21E7A1A29CCDB2C007AC3FA /* PokemonModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
