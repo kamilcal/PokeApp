@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		D21E79F529CC6983007AC3FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E79F429CC6983007AC3FA /* AppDelegate.swift */; };
 		D21E79F729CC6983007AC3FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E79F629CC6983007AC3FA /* SceneDelegate.swift */; };
-		D21E79F929CC6983007AC3FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E79F829CC6983007AC3FA /* ViewController.swift */; };
+		D21E79F929CC6983007AC3FA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E79F829CC6983007AC3FA /* HomeViewController.swift */; };
 		D21E79FC29CC6983007AC3FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21E79FA29CC6983007AC3FA /* Main.storyboard */; };
 		D21E79FE29CC6984007AC3FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D21E79FD29CC6984007AC3FA /* Assets.xcassets */; };
 		D21E7A0129CC6984007AC3FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D21E79FF29CC6984007AC3FA /* LaunchScreen.storyboard */; };
+		D21E7A0929CC6CAF007AC3FA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E7A0829CC6CAF007AC3FA /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D21E79F129CC6983007AC3FA /* PokemonApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21E79F429CC6983007AC3FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D21E79F629CC6983007AC3FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D21E79F829CC6983007AC3FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D21E79F829CC6983007AC3FA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D21E79FB29CC6983007AC3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D21E79FD29CC6984007AC3FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D21E7A0029CC6984007AC3FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D21E7A0229CC6984007AC3FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D21E7A0829CC6CAF007AC3FA /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,12 @@
 			children = (
 				D21E79F429CC6983007AC3FA /* AppDelegate.swift */,
 				D21E79F629CC6983007AC3FA /* SceneDelegate.swift */,
-				D21E79F829CC6983007AC3FA /* ViewController.swift */,
+				D21E79F829CC6983007AC3FA /* HomeViewController.swift */,
 				D21E79FA29CC6983007AC3FA /* Main.storyboard */,
 				D21E79FD29CC6984007AC3FA /* Assets.xcassets */,
 				D21E79FF29CC6984007AC3FA /* LaunchScreen.storyboard */,
 				D21E7A0229CC6984007AC3FA /* Info.plist */,
+				D21E7A0829CC6CAF007AC3FA /* ListViewController.swift */,
 			);
 			path = PokemonApp;
 			sourceTree = "<group>";
@@ -138,8 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D21E79F929CC6983007AC3FA /* ViewController.swift in Sources */,
+				D21E79F929CC6983007AC3FA /* HomeViewController.swift in Sources */,
 				D21E79F529CC6983007AC3FA /* AppDelegate.swift in Sources */,
+				D21E7A0929CC6CAF007AC3FA /* ListViewController.swift in Sources */,
 				D21E79F729CC6983007AC3FA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
