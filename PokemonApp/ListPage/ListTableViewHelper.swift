@@ -22,7 +22,7 @@ class ListTableViewHelper: NSObject{
         setupTableView()
     }
     private func setupTableView() {
-        tableView?.register(ListTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView?.register(.init(nibName:  "ListTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView?.delegate = self
         tableView?.dataSource = self
         

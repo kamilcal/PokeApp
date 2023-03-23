@@ -9,15 +9,28 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var contentImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setupUI()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+//}
+//
+//private extension ListTableViewCell{
+    
+    private func setupUI(){
+        
+        
+        backgroundImage.layer.cornerRadius = 10
+        titleLabel.text = "dasda"
+        contentImageView.layer.cornerRadius = 10
+        contentImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        
+    }
 }
