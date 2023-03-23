@@ -11,7 +11,7 @@ class ListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var tableHelper: ListTableViewHelper!
-
+    var viewModel = ListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class ListViewController: UIViewController {
 private extension ListViewController {
     
     private func setupUI(){
-        tableHelper = .init(tableView: tableView, navigationController: navigationController!)
+        tableHelper = .init(tableView: tableView, viewModel: viewModel, navigationController: navigationController!)
     }
 }
 

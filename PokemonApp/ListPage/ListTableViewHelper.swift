@@ -13,32 +13,23 @@ class ListTableViewHelper: NSObject{
     
     private var tableView: UITableView?
     private var navigationController: UINavigationController?
+    private var viewModel = ListViewModel()
 
     let apiClient = APIClients()
 
     
-    init(tableView: UITableView, navigationController: UINavigationController) {
+    init(tableView: UITableView, viewModel: ListViewModel, navigationController: UINavigationController) {
         self.tableView = tableView
         self.navigationController = navigationController
-        
+        self.viewModel = viewModel
+
         super.init()
         
         setupTableView()
         
-        let urlString = "https://pokeapi.co/api/v2/pokemon?limit=50"
-        guard let url = URL(string: urlString) else {
-            return
-        }
-
-        apiClient.makeAPIRequest(url: url) { (pokemonList: Pokemon) in
-            let pokemonResults = pokemonList.results
-            print(pokemonResults)
-            for pokemonResults in pokemonResults {
-                print(pokemonResults.name)
-            }
-            // Do something with the pokemon results here...
-        }
-
+        viewModel.getPokemonList(completion: {
+            self.tableView?.reloadData()
+        })
     }
     
     private func setupTableView() {
@@ -97,10 +88,12 @@ class ListTableViewHelper: NSObject{
 extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return viewModel.pokemons.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListTableViewCell
+        let pokemon = viewModel.pokemons[indexPath.row]
+        cell.titleLabel.text = pokemon.name
         return cell
     }
     
