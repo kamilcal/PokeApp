@@ -12,11 +12,14 @@ class ListTableViewHelper: NSObject{
     private let cellIdentifier = "ListCell"
     
     private var tableView: UITableView?
+    private var navigationController: UINavigationController?
+
     
     
-    
-    init(tableView: UITableView) {
+    init(tableView: UITableView, navigationController: UINavigationController) {
         self.tableView = tableView
+        self.navigationController = navigationController
+        
         super.init()
         
         setupTableView()
@@ -27,7 +30,14 @@ class ListTableViewHelper: NSObject{
         tableView?.dataSource = self
         
     }
+    
+
+    
 }
+
+
+
+
 //    MARK: - Delegate - Datasource
 
 extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
@@ -40,6 +50,13 @@ extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let detailVc = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+            .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
+
+        self.navigationController?.pushViewController(detailVc!, animated: true)
+    }
     
 }

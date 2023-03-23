@@ -26,6 +26,7 @@ class ListViewController: UIViewController {
 private extension ListViewController {
     
     private func setupUI(){
-        tableHelper = .init(tableView: tableView)
+        tableHelper = .init(tableView: tableView, navigationController: navigationController!)
     }
 }
+
