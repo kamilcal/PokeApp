@@ -12,7 +12,7 @@ class APIClients {
     private var dataTask: URLSessionDataTask?
     
     
-    func getPokemonDetail(url: URL, completion: @escaping (PokemonDetail) -> Void) {
+    func getPokemonDetail(url: URL, completion: @escaping (PokemonSelected) -> Void) {
         makeAPIRequest(url: url, completion: completion)
     }
     
