@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonSelected : Codable {
+struct PokemonDetail : Codable {
     var sprites: PokemonSprites
 }
 

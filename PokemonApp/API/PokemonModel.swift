@@ -12,8 +12,13 @@ struct Pokemon: Codable{
     
 }
 
-struct PokemonResults: Codable{
-    
+class PokemonResults: Codable {
     var name: String
-    var url: String
+    var url: URL
+    var imageUrl: String?
+    
+    init(name: String, url: URL) {
+        self.name = name
+        self.url = url
+    }
 }

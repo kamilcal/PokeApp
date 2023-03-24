@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class ListTableViewHelper: NSObject{
     
@@ -14,24 +16,23 @@ class ListTableViewHelper: NSObject{
     private var tableView: UITableView?
     private var navigationController: UINavigationController?
     private var viewModel = ListViewModel()
-
+    
     let apiClient = APIClients()
-
+    
     
     init(tableView: UITableView, viewModel: ListViewModel, navigationController: UINavigationController) {
         self.tableView = tableView
         self.navigationController = navigationController
         self.viewModel = viewModel
-
+        
         super.init()
         
         setupTableView()
-        
+
         viewModel.getPokemonList(completion: {
             self.tableView?.reloadData()
         })
     }
-    
     private func setupTableView() {
         tableView?.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "Header")
         tableView?.register(.init(nibName:  "ListTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
@@ -42,14 +43,14 @@ class ListTableViewHelper: NSObject{
     }
     
     //    MARK: - Header
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "Header") ?? UITableViewHeaderFooterView(reuseIdentifier: "Header")
         
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "pokemon")
-
+        
         
         headerView.contentView.addSubview(imageView)
         
@@ -68,7 +69,7 @@ class ListTableViewHelper: NSObject{
         headerLabel.font = UIFont(name: "Futura-Bold", size: 35)
         headerView.contentView.addSubview(headerLabel)
         headerLabel.font = UIFont.boldSystemFont(ofSize: 35)
-
+        
         
         NSLayoutConstraint.activate([
             headerLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12),
@@ -93,17 +94,18 @@ extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListTableViewCell
         let pokemon = viewModel.pokemons[indexPath.row]
-        cell.titleLabel.text = pokemon.name
+        cell.configure(with: pokemon)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         let detailVc = UIStoryboard.init(name: "Main", bundle: Bundle.main)
             .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
-
+        
         self.navigationController?.pushViewController(detailVc!, animated: true)
     }
     
 }
+
