@@ -11,12 +11,11 @@ class APIClients {
     
     private var dataTask: URLSessionDataTask?
     
+    static let shared = APIClients()
+
+    private let baseURL = "https://pokeapi.co/api/v2/"
     
-    func getPokemonDetail(url: URL, completion: @escaping (PokemonSelected) -> Void) {
-        makeAPIRequest(url: url, completion: completion)
-    }
-    
-    func makeAPIRequest<T: Decodable>(url: URL, completion: @escaping (T) -> Void) {
+    func makeAPIRequest<T: Decodable>(url: URL, completion: @escaping (Result<T, Error>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
@@ -35,7 +34,7 @@ class APIClients {
                     return
                 }
                 DispatchQueue.main.async {
-                    completion(decodedResponse)
+                    completion(.success(decodedResponse))
                 }
             case 400...499:
                 print("Client Error: \(httpResponse.statusCode)")
@@ -45,7 +44,14 @@ class APIClients {
                 print("Unexpected Response: \(httpResponse.statusCode)")
             }
         }.resume()
+    }
+    
+    func getPokemonDetailPage(with id: String, completion: @escaping (Result<PokemonDetail?, Error>) -> Void) {
+        guard let url = URL(string: baseURL + "pokemon/\(id)") else { return }
+        makeAPIRequest(url: url, completion: completion)
+    }
 
-
+    func getPokemonDetail(url: URL, completion: @escaping (Result<PokemonSelected, Error>) -> Void) {
+        makeAPIRequest(url: url, completion: completion)
     }
 }

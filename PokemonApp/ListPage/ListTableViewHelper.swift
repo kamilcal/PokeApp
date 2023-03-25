@@ -28,18 +28,17 @@ class ListTableViewHelper: NSObject{
         super.init()
         
         setupTableView()
+        viewModel.delegate = self
+        viewModel.getPokemonList()
         
-        
-        viewModel.getPokemonList(completion: {
-            self.tableView?.reloadData()
-        })
     }
     private func setupTableView() {
         tableView?.register(.init(nibName:  "ListTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView?.delegate = self
         tableView?.dataSource = self
-
+        
     }
+    
     
 }
 
@@ -48,11 +47,11 @@ class ListTableViewHelper: NSObject{
 extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.pokemons.count
+        return viewModel.pokemonList.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListTableViewCell
-        let pokemon = viewModel.pokemons[indexPath.row]
+        let pokemon = viewModel.pokemonList[indexPath.row]
         cell.configure(with: pokemon)
         return cell
     }
@@ -63,8 +62,30 @@ extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
         let detailVc = UIStoryboard.init(name: "Main", bundle: Bundle.main)
             .instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController
         
-        self.navigationController?.pushViewController(detailVc!, animated: true)
+        if let idString = viewModel.getPokemonId(at: indexPath.row), let id = Int(idString) {
+            detailVc?.id = id
+            print(detailVc?.id)
+            self.navigationController?.pushViewController(detailVc!, animated: true)
+        }
+        
+    }
+}
+
+extension ListTableViewHelper: PokemonListViewModelDelegate {
+    
+    func pokemonListDidUpdate() {
+        DispatchQueue.main.async {
+            self.tableView?.reloadData()
+        }
+    }
+    
+    func pokemonListDidFailToUpdate(error: Error) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Error", message: "Unable to update Pokemon list. Please try again later.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(okAction)
+            self.navigationController?.present(alertController, animated: true, completion: nil)
+        }
     }
     
 }
-

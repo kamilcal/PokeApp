@@ -25,6 +25,7 @@
 		D21E7A2629CDEE5D007AC3FA /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = D21E7A2529CDEE5D007AC3FA /* SDWebImage */; };
 		D21E7A2829CE284C007AC3FA /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E7A2729CE284C007AC3FA /* DetailModel.swift */; };
 		D21E7A3029CE4C1D007AC3FA /* Gradients.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E7A2F29CE4C1D007AC3FA /* Gradients.swift */; };
+		D2662A2229CEFBD400E10859 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2662A2129CEFBD400E10859 /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		D21E7A2029CD054F007AC3FA /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		D21E7A2729CE284C007AC3FA /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		D21E7A2F29CE4C1D007AC3FA /* Gradients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradients.swift; sourceTree = "<group>"; };
+		D2662A2129CEFBD400E10859 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				D21E7A1329CC80C4007AC3FA /* DetailViewController.swift */,
 				D21E7A2729CE284C007AC3FA /* DetailModel.swift */,
+				D2662A2129CEFBD400E10859 /* DetailViewModel.swift */,
 			);
 			path = DetailPage;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				D21E7A1E29CCF6E9007AC3FA /* PokemonDetailModel.swift in Sources */,
 				D21E7A0C29CC6F5A007AC3FA /* ListTableViewHelper.swift in Sources */,
 				D21E79F729CC6983007AC3FA /* SceneDelegate.swift in Sources */,
+				D2662A2229CEFBD400E10859 /* DetailViewModel.swift in Sources */,
 				D21E7A0F29CC6FA7007AC3FA /* ListTableViewCell.swift in Sources */,
 				D21E7A1429CC80C4007AC3FA /* DetailViewController.swift in Sources */,
 				D21E7A1A29CCDB2C007AC3FA /* PokemonModel.swift in Sources */,
