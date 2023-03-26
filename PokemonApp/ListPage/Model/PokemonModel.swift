@@ -7,17 +7,19 @@
 
 import Foundation
 
-struct Pokemon: Codable{
+struct Pokemon: Decodable{
     var results: [PokemonResults]
     
 }
 
-class PokemonResults: Codable {
+class PokemonResults: Decodable {
+    var id: Int?
     var name: String
-    var url: URL
+    var url: String
     var imageUrl: String?
     
-    init(name: String, url: URL) {
+    init(id: Int, name: String, url: String) {
+        self.id = id
         self.name = name
         self.url = url
     }
