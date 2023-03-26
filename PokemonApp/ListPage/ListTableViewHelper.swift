@@ -12,11 +12,10 @@ import SDWebImage
 class ListTableViewHelper: NSObject{
     
     private let cellIdentifier = "ListCell"
-    
     private var tableView: UITableView?
     private var navigationController: UINavigationController?
     private var viewModel = ListViewModel()
-
+    
     
     init(tableView: UITableView, viewModel: ListViewModel, navigationController: UINavigationController) {
         self.tableView = tableView
@@ -30,17 +29,19 @@ class ListTableViewHelper: NSObject{
         viewModel.getPokemonList()
         
     }
+}
+//MARK: - SetupUI
+
+private extension ListTableViewHelper{
+    
     private func setupTableView() {
         tableView?.register(.init(nibName:  "ListTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView?.delegate = self
         tableView?.dataSource = self
-        
     }
-    
-    
 }
 
-//    MARK: - Delegate - Datasource
+//MARK: - Delegate - Datasource
 
 extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
     
@@ -68,9 +69,10 @@ extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
         
     }
 }
+//MARK: - PokemonListViewModelDelegate
 
 extension ListTableViewHelper: PokemonListViewModelDelegate {
-
+    
     func pokemonListDidUpdate() {
         DispatchQueue.main.async {
             self.tableView?.reloadData()

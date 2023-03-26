@@ -15,7 +15,7 @@ protocol DetailViewModelDelegate: AnyObject {
 
 class DetailViewModel {
     
-     var pokemon: PokemonDetail?{
+    var pokemon: PokemonDetail?{
         didSet {
             if let pokemon = pokemon {
                 delegate?.pokemonDetailUpdated()
@@ -31,15 +31,10 @@ class DetailViewModel {
     
     
     func fetchPokemonDetailPage(id: String) {
-        guard let url = URL(string: APIConstant.baseURL + "pokemon/\(id)"),
-              let pokemonId = Int(id) else {
-            return
-        }
+        guard let url = URL(string: APIConstant.baseURL + "pokemon/\(id)")
+            else { return }
         
-        guard pokemonId > 0  else {
-            return
-        }
-        apiClient.getPokemonDetailPage(with: id) { result in
+        apiClient.pokemonDetail(with: id) { result in
             switch result {
             case .success(let pokemonDetail):
                 self.pokemon = pokemonDetail

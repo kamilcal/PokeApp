@@ -8,17 +8,20 @@
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var contentImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
+
+//MARK: - Lifecycle Functions
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         setupUI()
     }
-    
+
+//MARK: - Funcs
+
     func configure(with pokemon: PokemonResults) {
         titleLabel.text = pokemon.name
         
@@ -26,7 +29,11 @@ class ListTableViewCell: UITableViewCell {
             contentImageView.sd_setImage(with: imageUrl, completed: nil)
         }
     }
-    
+}
+
+//MARK: - Extensions
+private extension ListTableViewCell {
+
     private func setupUI(){
         backgroundImage.layer.cornerRadius = 10
         titleLabel.text = "dasda"

@@ -8,9 +8,9 @@
 import Foundation
 
 protocol APIClientProtocol {
-    func makeAPIRequest<T: Decodable>(url: URL, completion: @escaping (Result<T, Error>) -> Void)
-    func getPokemonDetailPage(with id: String, completion: @escaping (Result<PokemonDetail?, Error>) -> Void)
-    func getPokemonDetail(url: URL, completion: @escaping (Result<PokemonSelected, Error>) -> Void)
+    func APIRequest<T: Decodable>(url: URL, completion: @escaping (Result<T, Error>) -> Void)
+    func pokemonDetail(with id: String, completion: @escaping (Result<PokemonDetail?, Error>) -> Void)
+    func pokemonImege(url: URL, completion: @escaping (Result<PokemonSelected, Error>) -> Void)
 }
 
 
@@ -25,7 +25,7 @@ class APIClients: APIClientProtocol {
         self.session = session
     }
     
-    func makeAPIRequest<T: Decodable>(url: URL, completion: @escaping (Result<T, Error>) -> Void) {
+    func APIRequest<T: Decodable>(url: URL, completion: @escaping (Result<T, Error>) -> Void) {
         let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -57,12 +57,12 @@ class APIClients: APIClientProtocol {
         task.resume()
     }
     
-    func getPokemonDetailPage(with id: String, completion: @escaping (Result<PokemonDetail?, Error>) -> Void) {
+    func pokemonDetail(with id: String, completion: @escaping (Result<PokemonDetail?, Error>) -> Void) {
         guard let url = URL(string: APIConstant.baseURL + "pokemon/\(id)") else { return }
-        makeAPIRequest(url: url, completion: completion)
+        APIRequest(url: url, completion: completion)
     }
 
-    func getPokemonDetail(url: URL, completion: @escaping (Result<PokemonSelected, Error>) -> Void) {
-        makeAPIRequest(url: url, completion: completion)
+    func pokemonImege(url: URL, completion: @escaping (Result<PokemonSelected, Error>) -> Void) {
+        APIRequest(url: url, completion: completion)
     }
 }

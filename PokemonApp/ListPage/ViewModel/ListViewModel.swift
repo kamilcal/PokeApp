@@ -7,10 +7,14 @@
 
 import Foundation
 
+//MARK: - PokemonListViewModelDelegate
+
 protocol PokemonListViewModelDelegate: AnyObject {
     func pokemonListDidUpdate()
     func pokemonListDidFailToUpdate(error: Error)
 }
+
+//MARK: - ListViewModel
 
 class ListViewModel {
     
@@ -24,8 +28,8 @@ class ListViewModel {
     }
 
     func getPokemonList() {
-        let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=50")!
-        apiClient.makeAPIRequest(url: url) { [weak self] (result: Result<Pokemon, Error>) in
+        let url = URL(string: APIConstant.baseURL + "pokemon?limit=50")!
+        apiClient.APIRequest(url: url) { [weak self] (result: Result<Pokemon, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let pokemonList):
@@ -42,7 +46,7 @@ class ListViewModel {
         for pokemon in pokemonList {
             group.enter()
             if let url = URL(string: pokemon.url) {
-                apiClient.getPokemonDetail(url: url) { [weak self] (result: Result<PokemonSelected, Error>) in
+                apiClient.pokemonImege(url: url) { [weak self] (result: Result<PokemonSelected, Error>) in
                     guard let self = self else { return }
                     switch result {
                     case .success(let pokemonSelected):

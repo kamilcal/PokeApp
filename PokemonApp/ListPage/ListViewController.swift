@@ -10,33 +10,29 @@ import UIKit
 class ListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
     private var tableHelper: ListTableViewHelper!
     var viewModel = ListViewModel()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationController?.navigationBar.prefersLargeTitles = false
-        navigationController?.navigationBar.topItem?.title = "Pokemon App ⚡ "
-        
+//MARK: - Lifecycle Functions
 
+    override func viewDidLoad() {
+        super.viewDidLoad()        
+        setupNavigation()
         setupUI()
         gradientUI()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//    navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-//        navigationController?.navigationBar.prefersLargeTitles = false
-    }
-
 }
+
+//MARK: - Extensions
 
 private extension ListViewController {
     
+    private func setupNavigation(){
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationBar.topItem?.title = "Pokemon App ⚡ "
+    }
+        
     private func setupUI(){
         tableHelper = .init(tableView: tableView, viewModel: viewModel, navigationController: navigationController!)
     }
