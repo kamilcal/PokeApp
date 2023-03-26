@@ -28,13 +28,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0h-TZ-yoi">
-                        <rect key="frame" x="130" y="35" width="254" height="30"/>
+                        <rect key="frame" x="130" y="40" width="254" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="254" id="NtX-0j-5c2"/>
                             <constraint firstAttribute="height" constant="30" id="rwa-Kf-YhE"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="22"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -43,7 +43,7 @@
                     <constraint firstItem="F0h-TZ-yoi" firstAttribute="leading" secondItem="Yzn-q6-UcJ" secondAttribute="trailing" constant="8" symbolic="YES" id="MOh-QY-4sG"/>
                     <constraint firstAttribute="bottom" secondItem="UTG-6c-rEA" secondAttribute="bottom" constant="5" id="OSS-ZJ-BFe"/>
                     <constraint firstItem="Yzn-q6-UcJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Pkg-H6-8vl"/>
-                    <constraint firstItem="F0h-TZ-yoi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="35" id="RG8-Fn-6VK"/>
+                    <constraint firstItem="F0h-TZ-yoi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="RG8-Fn-6VK"/>
                     <constraint firstItem="Yzn-q6-UcJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="cQ7-RD-EV5"/>
                     <constraint firstItem="UTG-6c-rEA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="dEV-Jo-AVc"/>
                     <constraint firstAttribute="bottom" secondItem="Yzn-q6-UcJ" secondAttribute="bottom" constant="5" id="e4H-wK-a2g"/>
