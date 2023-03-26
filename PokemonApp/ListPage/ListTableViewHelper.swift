@@ -15,7 +15,8 @@ class ListTableViewHelper: NSObject{
     private var tableView: UITableView?
     private var navigationController: UINavigationController?
     private var viewModel = ListViewModel()
-    
+    private var activityIndicator = UIActivityIndicatorView(style: .large)
+
     
     init(tableView: UITableView, viewModel: ListViewModel, navigationController: UINavigationController) {
         self.tableView = tableView
@@ -26,6 +27,7 @@ class ListTableViewHelper: NSObject{
         
         setupTableView()
         viewModel.delegate = self
+        activityIndicator.startAnimating()
         viewModel.getPokemonList()
         
     }
@@ -38,7 +40,17 @@ private extension ListTableViewHelper{
         tableView?.register(.init(nibName:  "ListTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         tableView?.delegate = self
         tableView?.dataSource = self
+        
+        let indicator = UIActivityIndicatorView(style: .gray)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        tableView?.addSubview(indicator)
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: tableView!.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: tableView!.centerYAnchor),
+        ])
+        activityIndicator = indicator
     }
+
 }
 
 //MARK: - Delegate - Datasource
@@ -76,6 +88,7 @@ extension ListTableViewHelper: PokemonListViewModelDelegate {
     func pokemonListDidUpdate() {
         DispatchQueue.main.async {
             self.tableView?.reloadData()
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -85,6 +98,8 @@ extension ListTableViewHelper: PokemonListViewModelDelegate {
             let okAction = UIAlertAction(title: "OK", style: .default)
             alertController.addAction(okAction)
             self.navigationController?.present(alertController, animated: true, completion: nil)
+            self.activityIndicator.stopAnimating()
+
         }
     }
     
