@@ -23,38 +23,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8563AB76-2F0A-4F9B-9B87-669C057A9D23"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PokemonApp/DetailPage/DetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "getDetail()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8B48AA0C-B66A-4ACA-94D1-DD7AD0B1783B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PokemonApp/DetailPage/DetailViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "updateUI(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5F86A53A-4EAE-48B6-B31A-7E06C5BAE7D7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -62,9 +30,9 @@
             filePath = "PokemonApp/DetailPage/DetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "fetchPokemonDetailPage(id:completion:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "fetchPokemonDetailPage(id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,9 +46,9 @@
             filePath = "PokemonApp/DetailPage/DetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "fetchPokemonDetailPage(id:completion:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "fetchPokemonDetailPage(id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -94,9 +62,9 @@
             filePath = "PokemonApp/DetailPage/DetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "fetchPokemonDetailPage(id:completion:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "fetchPokemonDetailPage(id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

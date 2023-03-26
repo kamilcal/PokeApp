@@ -21,40 +21,34 @@ class DetailViewController: UIViewController {
     
     var id: Int? {
         didSet {
-            
+            guard let id = id else {
+                return
+            }
+            viewModel.fetchPokemonDetailPage(id: "\(id)")
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-   
-        getDetail()
+        viewModel.delegate = self
+    }
+}
+
+extension DetailViewController: DetailViewModelDelegate {
+    
+    func pokemonDetailUpdated() {
+        guard let pokemonDetail = viewModel.pokemon else { return }
+        viewModel.updateUI(with: pokemonDetail, on: self)
     }
     
-    func getDetail() {
-        guard let id = id else {
-            print("id is nil")
-            return
-        }
-        viewModel.fetchPokemonDetailPage(id: "\(id)") { [weak self] result in
-            switch result {
-            case .success(let pokemonDetail):
-                self?.updateUI(pokemonDetail!)
-            case .failure(let error):
-                print("Error fetching Pokemon detail: \(error.localizedDescription)")
-            }
+    func pokemonDetailFetchFailed(with error: Error) {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Error", message: "Error fetching Pokemon detail.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(okAction)
+            self.navigationController?.present(alertController, animated: true, completion: nil)
         }
     }
-
     
-    func updateUI(_ pokemonDetail: PokemonDetail) {
-        titleLabel.text = pokemonDetail.name.capitalized
-        abilitiesTitle.text = pokemonDetail.abilities.map { $0.ability.name.capitalized }.joined(separator: ", ")
-
-        if let imageUrlString = pokemonDetail.sprites.front_default, let imageUrl = URL(string: imageUrlString) {
-            imageView.sd_setImage(with: imageUrl, completed: nil)
-            backgroundView.sd_setImage(with: imageUrl, completed: nil)
-
-        }
-    }
+    
+    
 }

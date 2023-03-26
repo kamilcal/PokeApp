@@ -16,9 +16,7 @@ class ListTableViewHelper: NSObject{
     private var tableView: UITableView?
     private var navigationController: UINavigationController?
     private var viewModel = ListViewModel()
-    
-    let apiClient = APIClients()
-    
+
     
     init(tableView: UITableView, viewModel: ListViewModel, navigationController: UINavigationController) {
         self.tableView = tableView
@@ -47,7 +45,7 @@ class ListTableViewHelper: NSObject{
 extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.pokemonList.count
+        return viewModel.pokemonListCount
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ListTableViewCell
@@ -72,7 +70,7 @@ extension ListTableViewHelper: UITableViewDelegate, UITableViewDataSource{
 }
 
 extension ListTableViewHelper: PokemonListViewModelDelegate {
-    
+
     func pokemonListDidUpdate() {
         DispatchQueue.main.async {
             self.tableView?.reloadData()

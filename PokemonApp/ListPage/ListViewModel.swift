@@ -17,10 +17,15 @@ class ListViewModel {
     var pokemonList: [PokemonResults] = []
     weak var delegate: PokemonListViewModelDelegate?
 
+    private let apiClient: APIClientProtocol
+
+    init(apiClient: APIClientProtocol = APIClients.shared) {
+        self.apiClient = apiClient
+    }
 
     func getPokemonList() {
         let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=50")!
-        APIClients.shared.makeAPIRequest(url: url) { [weak self] (result: Result<Pokemon, Error>) in
+        apiClient.makeAPIRequest(url: url) { [weak self] (result: Result<Pokemon, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let pokemonList):
@@ -37,7 +42,7 @@ class ListViewModel {
         for pokemon in pokemonList {
             group.enter()
             if let url = URL(string: pokemon.url) {
-                APIClients.shared.getPokemonDetail(url: url) { [weak self] (result: Result<PokemonSelected, Error>) in
+                apiClient.getPokemonDetail(url: url) { [weak self] (result: Result<PokemonSelected, Error>) in
                     guard let self = self else { return }
                     switch result {
                     case .success(let pokemonSelected):
@@ -62,6 +67,10 @@ class ListViewModel {
             return String(id)
         }
         return nil
+    }
+    
+    var pokemonListCount: Int {
+        pokemonList.count
     }
 
 }
